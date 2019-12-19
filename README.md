@@ -63,27 +63,23 @@ For every change on ***device heading***, ***device location***, ***ISS location
 
 1. Horizontal axis
 
-1. Similar to `ISSCompassViewController`, `ISSAbsoluteDirectionViewController` gets the `DeviceTrueHeading` from *CoreLocation* framework and ISS `BearingAngle` from `ISSLocation`. 
+    1. Similar to `ISSCompassViewController`, `ISSAbsoluteDirectionViewController` gets the `DeviceTrueHeading` from *CoreLocation* framework and ISS `BearingAngle` from `ISSLocation`. 
 
-2. The difference between `DeviceTrueHeading` and `BearingAngle` is then normalized to the range -180 to 180 degrees, indicating the left and right direction to the current ISS location horizontally. 
+    2. The difference between `DeviceTrueHeading` and `BearingAngle` is then normalized to the range -180 to 180 degrees, indicating the left and right direction to the current ISS location horizontally. 
 
-3. In the HUD display, ISS icon x offset to the center point is then calculated with the angle difference using `func issIconXOffset(hudRadius: Double, xAngle: Double) -> Double`. HUD is only visible for +/- 90 degrees, so that any angle difference value greater than 90 will make ISS icon displayed at the edge of horizontal axis.
+    3. In the HUD display, ISS icon x offset to the center point is then calculated with the angle difference using `func issIconXOffset(hudRadius: Double, xAngle: Double) -> Double`. HUD is only visible for +/- 90 degrees, so that any angle difference value greater than 90 will make ISS icon displayed at the edge of horizontal axis.
 
 2. Vertical axis
 
-1. To find the vertical angles between ISS and device, **elevation angle** between the device location and ISS location, and **device pitch angle** needs to be calculated.
+    1. To find the vertical angles between ISS and device, **elevation angle** between the device location and ISS location, and **device pitch angle** needs to be calculated.
 
-2. Elevation angle is calculated with ECEF vectors from LLA coordinates. [MathUtils+Elevation](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/Utils/MathUtils/MathUtils%2BElevation.swift) uses the formula referenced from the following articles:
+    2. Elevation angle is calculated with ECEF vectors from LLA coordinates. [MathUtils+Elevation](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/Utils/MathUtils/MathUtils%2BElevation.swift) uses the formula referenced from the following articles: [International Space Station Orbit Tracker](https://ieiuniumlux.github.io/ISSOT/), [GNSS learning notes](https://www.cnblogs.com/langzou/p/11388520.html), [Calculating View Angle](https://gis.stackexchange.com/questions/58923/calculating-view-angle)
 
-> [International Space Station Orbit Tracker](https://ieiuniumlux.github.io/ISSOT/)
-> [GNSS learning notes](https://www.cnblogs.com/langzou/p/11388520.html)
-> [Calculating View Angle](https://gis.stackexchange.com/questions/58923/calculating-view-angle)
+    3. **Device pitch** can be get from *CoreMotion* framework. Due to unknown mystery reason from Apple, `pitch` is the only attribute that ranges from -90 to 90 in `attitude` object in `deviceMotion`. (`roll` and `yaw` both have ranges from -180 to 180). To correct the device pitch when device ***upside down***, device `pitch` needs to be extended to +/-180 degrees.
 
-3. **Device pitch** can be get from *CoreMotion* framework. Due to unknown mystery reason from Apple, `pitch` is the only attribute that ranges from -90 to 90 in `attitude` object in `deviceMotion`. (`roll` and `yaw` both have ranges from -180 to 180). To correct the device pitch when device ***upside down***, device `pitch` needs to be extended to +/-180 degrees.
+    4. `gravity.z` value in *CoreMotion* is able to tell if the device is upside down (`gravity.z` is negative when device faces up). In [ISSAbsoluteDirectionViewModel](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/UI/ISSScreens/ISSAbsoluteDirection/ISSAbsoluteDirectionViewModel.swift), `func getDevicePitchAngle() -> Double?` returns the extended pitch angle based on the readings of `gravity.z`.
 
-4. `gravity.z` value in *CoreMotion* is able to tell if the device is upside down (`gravity.z` is negative when device faces up). In [ISSAbsoluteDirectionViewModel](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/UI/ISSScreens/ISSAbsoluteDirection/ISSAbsoluteDirectionViewModel.swift), `func getDevicePitchAngle() -> Double?` returns the extended pitch angle based on the readings of `gravity.z`.
-
-5. After getting the `pitch` of device, the angle between device **pitch** and ISS **elevation angle** can be then calculated. The y axis offset for ISS icon position can be get from `func issIconYOffset(hudRadius: Double, yAngle: Double) -> Double`.
+    5. After getting the `pitch` of device, the angle between device **pitch** and ISS **elevation angle** can be then calculated. The y axis offset for ISS icon position can be get from `func issIconYOffset(hudRadius: Double, yAngle: Double) -> Double`.
 
 With the offset for x and y axis, the ISS icon can be drawn on the screen. The ISS icon location will be updated whenever ***device location***, ***device heading***, ***ISS location*** and ***device motion*** is updated.
 
