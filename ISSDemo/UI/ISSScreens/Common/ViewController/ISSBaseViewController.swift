@@ -97,7 +97,7 @@ class ISSBaseViewController: UIViewController {
     
     /// Update debug information
     func updateDebugViews() {
-        #if true //targetEnvironment(simulator)
+        #if targetEnvironment(simulator)
         topDebugView?.isHidden = false
         bottomDebugView?.isHidden = false
         
