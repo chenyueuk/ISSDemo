@@ -43,7 +43,7 @@ The map is automatically centered to the ISS location if the `trackSwitch` is se
 
 ### 4. ISS Compass
 
-**ISSCompassViewController** has two functionalities: uses *CoreLocation* framework to show a digital compass on the phone and uses *CoreLocation* plus *ISS location* to show a ISS icon at the correct direction on the compass.
+**ISSCompassViewController** has two functionalities: uses *CoreLocation* framework to show a digital compass on the phone **and** uses *CoreLocation* plus *ISS location* to show a ISS icon at the correct direction on the compass.
 
 1. Digital compass
 `ISSCompassViewModel` uses `startUpdatingHeading()` to get the current *trueHeading* of device then save it into Realm `DeviceTrueHeading` object. Whenever `DeviceTrueHeading` object is updated, `issContainerImageView` (compass image) will be rotated according to the `DeviceTrueHeading` data.
