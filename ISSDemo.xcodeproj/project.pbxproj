@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1020F06580EF0814C4F2F78A /* Pods_ISSDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B4A002C34880138B4BF8F /* Pods_ISSDemo.framework */; };
 		3459C499323F131364208BEF /* Pods_ISSDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6980382F0EB0F82B10DB5438 /* Pods_ISSDemoTests.framework */; };
+		B014CA5523AC202900502A7B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B014CA5423AC202900502A7B /* README.md */; };
 		B0798F3D23AB827800B45E6D /* MathUtils+Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0798F3C23AB827800B45E6D /* MathUtils+Circle.swift */; };
 		B0798F4023AB9DFE00B45E6D /* ISSAbsoluteDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0798F3F23AB9DFE00B45E6D /* ISSAbsoluteDirectionViewController.swift */; };
 		B0798F4223AB9E5100B45E6D /* ISSAbsoluteDirectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0798F4123AB9E5100B45E6D /* ISSAbsoluteDirectionViewModel.swift */; };
@@ -77,6 +78,7 @@
 		6980382F0EB0F82B10DB5438 /* Pods_ISSDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISSDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		968B4A002C34880138B4BF8F /* Pods_ISSDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISSDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DA982E8688F4C5B13A015D /* Pods-ISSDemo-ISSDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISSDemo-ISSDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-ISSDemo-ISSDemoUITests/Pods-ISSDemo-ISSDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B014CA5423AC202900502A7B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		B0798F3C23AB827800B45E6D /* MathUtils+Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MathUtils+Circle.swift"; sourceTree = "<group>"; };
 		B0798F3F23AB9DFE00B45E6D /* ISSAbsoluteDirectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISSAbsoluteDirectionViewController.swift; sourceTree = "<group>"; };
 		B0798F4123AB9E5100B45E6D /* ISSAbsoluteDirectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISSAbsoluteDirectionViewModel.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		B0DA5C4323AA1CC4008C3E58 /* ISSDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B014CA5423AC202900502A7B /* README.md */,
 				B0DA5C7423AA1CD0008C3E58 /* AppConfig */,
 				B0DA5C8023AA2F3F008C3E58 /* Model */,
 				B0DA5C7523AA1CF2008C3E58 /* Resources */,
@@ -567,6 +570,7 @@
 			files = (
 				B0DA5C7B23AA2B84008C3E58 /* Settings.bundle in Resources */,
 				B0DA5C5123AA1CC6008C3E58 /* LaunchScreen.storyboard in Resources */,
+				B014CA5523AC202900502A7B /* README.md in Resources */,
 				B0DA5C4E23AA1CC6008C3E58 /* Assets.xcassets in Resources */,
 				B0DA5C4C23AA1CC4008C3E58 /* Main.storyboard in Resources */,
 			);
