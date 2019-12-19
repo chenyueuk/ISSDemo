@@ -17,6 +17,7 @@ If the project was cloned from git repo, please use **cocoapods** to fetch requi
 
 ### 1. Menu Screen
 
+![MenuScreen](https://github.com/chenyueuk/ISSDemo/blob/master/Screenshots/MenuScreen.PNG)
 **MenuViewController** is a `UITableViewController` with it's datasource from [MenuViewModel.swift](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/UI/MenuViewController/MenuViewModel.swift).
 
 In **MenuViewModel**, available options are defined in `enum Item`. The special `.test` option is only shown in *simulator* mode.
@@ -25,6 +26,7 @@ In **MenuViewModel**, available options are defined in `enum Item`. The special 
 
 ### 2. Flyover times Screen
 
+![FlyoverTimesScreen](https://github.com/chenyueuk/ISSDemo/blob/master/Screenshots/FlyoverTimesScreen.PNG)
 **FlyoverTimesViewController** is a `UITableViewController` that displays the next 5 ISS flyover times for the device location. It uses [LocationUpdater](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/Utils/CoreLocation/LocationUpdater.swift) to get the current location of device, then call [GetFlyoverTimesService](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/WebService/GetFlyoverTimesService.swift) to fetch the ISS flyover times.
 
 **LocationUpdater** uses *CoreLocation* framework, when `func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)` called, it saves the location data into Realm database's **LocationStream** object.
@@ -35,6 +37,7 @@ After **ISSPassTimes** object updated, **FlyoverTimesViewController** gets a not
 
 ### 3. ISS Map
 
+![ISSMapScreen](https://github.com/chenyueuk/ISSDemo/blob/master/Screenshots/ISSMapScreen.PNG)
 **ISSMapViewController** is a `UIViewController` that contains a `MKMapView` from *MapKit*. It fetches the current ISS location by calling `GetISSLocationService`. Then it creats a `MKAnnotation` on the map to indicate the positioning of ISS.
 
 Successful `GetISSLocationService` will store the ISS location data into Realm database `ISSLocation` object. Realm update will trigger the annotation and center position updates in ISSMapViewController.
@@ -43,6 +46,7 @@ The map is automatically centered to the ISS location if the `trackSwitch` is se
 
 ### 4. ISS Compass
 
+![ISSCompassScreen](https://github.com/chenyueuk/ISSDemo/blob/master/Screenshots/ISSCompassScreen.PNG)
 **ISSCompassViewController** has two functionalities: uses *CoreLocation* framework to show a digital compass on the phone **and** uses *CoreLocation* plus *ISS location* to show a ISS icon at the correct direction on the compass.
 
 1. Digital compass
@@ -59,6 +63,7 @@ For every change on ***device heading***, ***device location***, ***ISS location
 
 ### 5. ISS absolute direction
 
+![ISSHUDScreen](https://github.com/chenyueuk/ISSDemo/blob/master/Screenshots/ISSHUDScreen.PNG)
 **ISSAbsoluteDirectionViewController** has a HUD like window to display the ISS direction in 3D axis. It gets **device heading** and **ISS bearing angle** to calculate the horizontal angle between device and ISS. And it uses **device pitch** from *CoreMotion* framework and **elevation angle** from ISS location to calculate vertial angle between device and ISS. Then it displays the ISS icon in the screen according to those angles.
 
 1. Horizontal axis
