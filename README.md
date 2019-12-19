@@ -62,6 +62,7 @@ For every change on ***device heading***, ***device location***, ***ISS location
 **ISSAbsoluteDirectionViewController** has a HUD like window to display the ISS direction in 3D axis. It gets **device heading** and **ISS bearing angle** to calculate the horizontal angle between device and ISS. And it uses **device pitch** from *CoreMotion* framework and **elevation angle** from ISS location to calculate vertial angle between device and ISS. Then it displays the ISS icon in the screen according to those angles.
 
 1. Horizontal axis
+
 1. Similar to `ISSCompassViewController`, `ISSAbsoluteDirectionViewController` gets the `DeviceTrueHeading` from *CoreLocation* framework and ISS `BearingAngle` from `ISSLocation`. 
 
 2. The difference between `DeviceTrueHeading` and `BearingAngle` is then normalized to the range -180 to 180 degrees, indicating the left and right direction to the current ISS location horizontally. 
@@ -69,6 +70,7 @@ For every change on ***device heading***, ***device location***, ***ISS location
 3. In the HUD display, ISS icon x offset to the center point is then calculated with the angle difference using `func issIconXOffset(hudRadius: Double, xAngle: Double) -> Double`. HUD is only visible for +/- 90 degrees, so that any angle difference value greater than 90 will make ISS icon displayed at the edge of horizontal axis.
 
 2. Vertical axis
+
 1. To find the vertical angles between ISS and device, **elevation angle** between the device location and ISS location, and **device pitch angle** needs to be calculated.
 
 2. Elevation angle is calculated with ECEF vectors from LLA coordinates. [MathUtils+Elevation](https://github.com/chenyueuk/ISSDemo/blob/master/ISSDemo/Utils/MathUtils/MathUtils%2BElevation.swift) uses the formula referenced from the following articles:
