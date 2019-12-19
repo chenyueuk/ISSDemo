@@ -1,14 +1,12 @@
 # ISSDemo
 
 ## Installation
-------------------
 
 If the project was downloaded and unzipped from compressed file, it should be built and run without any issues.
 
 If the project was cloned from git repo, please use **cocoapods** to fetch required dependencies. For cocoapods installation, please follow this [page](https://guides.cocoapods.org/using/getting-started.html). If cocoapods is alreay installed, please go to the **root** directory with **terminal**, and run `pod install`.
 
 ## Dependencies
-------------------
 
 1. Realm
 **Realm** is a open source database library to manage app persistent data in reactive manner. For more information please follow this [link](https://realm.io/docs/swift/latest). Realm is used for offline data storage.
@@ -16,7 +14,6 @@ If the project was cloned from git repo, please use **cocoapods** to fetch requi
 **Alamofire** is a open source HTTP networking library in Swift. For more information please follow this [link](https://github.com/Alamofire/Alamofire). Alamofire is used to create cleaner API calls.
 
 ## App description
-------------------
 
 ### Menu
 
